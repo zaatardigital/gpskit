@@ -45,13 +45,7 @@
 
 	#tag Method, Flags = &h0
 		Sub Constructor(inNMEADataChunk As String)
-		  //-- Having this constructor protected, prevent the use of the default constructor outside the class
-		  
-		  // To be thread safe
-		  #pragma DisableBackgroundTasks
-		  
-		  // Other optimizations
-		  #pragma DisableBoundsChecking
+		  //-- Initialize this instance with the NMEA data passed
 		  
 		  Self.pBirthTime = Microseconds
 		  
