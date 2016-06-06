@@ -1,14 +1,6 @@
 #tag Class
  Attributes ( Encryption = True ) Protected Class GPBOD
 Inherits zdGPSKit.NMEA.Sentence
-	#tag Method, Flags = &h1000
-		Sub Constructor(inNMEADataChunk As String)
-		  // Calling the overridden superclass constructor.
-		  
-		  Super.Constructor( inNMEADataChunk )
-		End Sub
-	#tag EndMethod
-
 	#tag Method, Flags = &h0
 		Function Destination() As String
 		  //-- Return the name of the 'destination' waypoint in the device

@@ -25,14 +25,6 @@ Inherits zdGPSKit.NMEA.Sentence
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h1000
-		Sub Constructor(inNMEADataChunk As String)
-		  // Calling the overridden superclass constructor.
-		  Super.Constructor( inNMEADataChunk )
-		  
-		End Sub
-	#tag EndMethod
-
 	#tag Method, Flags = &h0
 		Function PassingPerpendicular() As String
 		  //-- Returns "A" when passing the perpendicular

@@ -1,15 +1,6 @@
 #tag Class
  Attributes ( Encryption = True ) Protected Class PGRMF
 Inherits zdGPSKit.NMEA.Sentence
-	#tag Method, Flags = &h1000
-		Sub Constructor(inNMEADataChunk As String)
-		  
-		  // Calling the overridden superclass constructor.
-		  Super.Constructor( inNMEADataChunk )
-		  
-		End Sub
-	#tag EndMethod
-
 	#tag Method, Flags = &h0
 		Function CourseTrue() As String
 		  //-- Course over ground, degrees true

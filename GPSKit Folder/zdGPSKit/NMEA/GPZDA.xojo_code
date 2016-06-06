@@ -1,14 +1,6 @@
 #tag Class
  Attributes ( Encrypted = True ) Protected Class GPZDA
 Inherits zdGPSKit.NMEA.Sentence
-	#tag Method, Flags = &h1000
-		Sub Constructor(inNMEADataChunk As String)
-		  
-		  // Calling the overridden superclass constructor.
-		  Super.Constructor( inNMEADataChunk )
-		End Sub
-	#tag EndMethod
-
 	#tag Method, Flags = &h0
 		Function Day() As String
 		  //-- Return the Day (1-31) from the GPS device

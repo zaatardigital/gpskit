@@ -43,8 +43,8 @@
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h1
-		Protected Sub Constructor(inNMEADataChunk As String)
+	#tag Method, Flags = &h0
+		Sub Constructor(inNMEADataChunk As String)
 		  //-- Having this constructor protected, prevent the use of the default constructor outside the class
 		  
 		  // To be thread safe

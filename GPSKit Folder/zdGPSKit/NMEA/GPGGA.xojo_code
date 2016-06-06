@@ -18,15 +18,6 @@ Inherits zdGPSKit.NMEA.Sentence
 		End Function
 	#tag EndMethod
 
-	#tag Method, Flags = &h1000
-		Sub Constructor(inNMEADataChunk As String)
-		  
-		  // Calling the overridden superclass constructor.
-		  Super.Constructor( inNMEADataChunk )
-		  
-		End Sub
-	#tag EndMethod
-
 	#tag Method, Flags = &h0
 		Function DGPSDataAge() As String
 		  //-- The time since last DGPS update

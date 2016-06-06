@@ -1,15 +1,6 @@
 #tag Class
  Attributes ( Encryption = True ) Protected Class GPVTG
 Inherits zdGPSKit.NMEA.Sentence
-	#tag Method, Flags = &h1000
-		Sub Constructor(inNMEADataChunk As String)
-		  
-		  // Calling the overridden superclass constructor.
-		  Super.Constructor( inNMEADataChunk )
-		  
-		End Sub
-	#tag EndMethod
-
 	#tag Method, Flags = &h0
 		Function CourseMagnetic() As String
 		  //-- The magnetic course made good in degrees

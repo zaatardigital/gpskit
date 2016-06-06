@@ -1,14 +1,6 @@
 #tag Class
  Attributes ( Encryption = True ) Protected Class PGRME
 Inherits zdGPSKit.NMEA.Sentence
-	#tag Method, Flags = &h1000
-		Sub Constructor(inNMEADataChunk As String)
-		  // Calling the overridden superclass constructor.
-		  Super.Constructor( inNMEADataChunk )
-		  
-		End Sub
-	#tag EndMethod
-
 	#tag Method, Flags = &h0
 		Function EstimatedHorizontalError() As String
 		  //-- Estimated horizontal position error in meters (HPE)
