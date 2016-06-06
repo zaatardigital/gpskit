@@ -8,3 +8,5 @@ Functionalities:
   Supports the text output protocol.
   Easy to implement other hardware and logical protocols with the provided class interfaces.
   Provide a GPS constellation display control in the demo application.
+  
+  Check the documentation at http://docs.zaatardigital.com/
