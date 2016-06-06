@@ -255,7 +255,6 @@ Begin Window SerialSetupWindow
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Serial Speed"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -290,7 +289,6 @@ Begin Window SerialSetupWindow
       Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Parity"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -325,7 +323,6 @@ Begin Window SerialSetupWindow
       Selectable      =   False
       TabIndex        =   9
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Bits"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -360,7 +357,6 @@ Begin Window SerialSetupWindow
       Selectable      =   False
       TabIndex        =   10
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Stop Bits"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -387,7 +383,6 @@ End
 
 	#tag Method, Flags = &h1000
 		Sub Constructor(inBaudTag As Integer, inParityTag As Integer, inBitsTag As Integer, inStopBitsTag As Integer)
-		  
 		  // Calling the overridden superclass constructor.
 		  Super.Constructor
 		  
@@ -426,7 +421,6 @@ End
 #tag Events BaudMenu
 	#tag Event
 		Sub Open()
-		  
 		  // Build the menu
 		  Me.AddRow "300 bauds"
 		  Me.Rowtag( Me.ListCount  - 1 ) = Serial.Baud300
@@ -466,7 +460,6 @@ End
 #tag Events ParityMenu
 	#tag Event
 		Sub Open()
-		  
 		  // Build the menu
 		  Me.AddRow "None"
 		  Me.Rowtag( Me.ListCount  - 1 ) = Serial.ParityNone
@@ -480,7 +473,6 @@ End
 #tag Events StopBitsMenu
 	#tag Event
 		Sub Open()
-		  
 		  // Build the menu
 		  Me.AddRow "1"
 		  Me.Rowtag( Me.ListCount  - 1 ) = Serial.StopBits1
@@ -495,7 +487,6 @@ End
 #tag Events BitsMenu
 	#tag Event
 		Sub Open()
-		  
 		  // Build the menu
 		  Me.AddRow "5"
 		  Me.Rowtag( Me.ListCount  - 1 ) = Serial.Bits5
@@ -513,16 +504,17 @@ End
 #tag Events BtnOK
 	#tag Event
 		Sub Action()
+		  //-- The user clicked OK
 		  
 		  Self.UserHitCancel = False
 		  Self.Hide
-		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events BtnCancel
 	#tag Event
 		Sub Action()
+		  //-- The user clicked 'Cancel'
 		  
 		  Self.UserHitCancel = True
 		  Self.Hide

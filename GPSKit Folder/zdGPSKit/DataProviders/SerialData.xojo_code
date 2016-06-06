@@ -52,18 +52,14 @@ Implements zdGPSKit.DataProvider
 
 	#tag Method, Flags = &h0
 		Sub Close()
-		  //-- Close the connection
-		  
-		  #pragma DisableBackgroundTasks
+		  //-- Close the serial connection
 		  
 		  // Close & jettison the serial socket if necessary
 		  If Not ( Self.pSerialSocket Is Nil ) Then
-		    
 		    Self.pSerialSocket.Close
 		    Self.pSerialSocket = Nil
 		    
 		  End If
-		  
 		End Sub
 	#tag EndMethod
 
@@ -94,10 +90,7 @@ Implements zdGPSKit.DataProvider
 		  //-- Retrieve the index of the passed listener
 		  // Return -1 if no match is found
 		  
-		  #pragma DisableBackgroundTasks
-		  
 		  For i As Integer = Self.pDataListeners.Ubound DownTo 0
-		    
 		    // If we have a match, then return the index
 		    If Self.pDataListeners( i ).Value = inListener Then Return i
 		    
@@ -105,7 +98,6 @@ Implements zdGPSKit.DataProvider
 		  
 		  // No match Found
 		  Return -1
-		  
 		End Function
 	#tag EndMethod
 
@@ -120,10 +112,6 @@ Implements zdGPSKit.DataProvider
 	#tag Method, Flags = &h21
 		Private Sub NotifyErrorToListeners(inErrorCode As Integer)
 		  //-- Send each registered listener an error notification
-		  
-		  #pragma DisableBackgroundTasks
-		  #pragma DisableBoundsChecking
-		  #Pragma NilObjectChecking Off
 		  
 		  For i As Integer = Self.pDataListeners.Ubound DownTo 0
 		    
@@ -141,7 +129,6 @@ Implements zdGPSKit.DataProvider
 		    End If
 		    
 		  Next
-		  
 		End Sub
 	#tag EndMethod
 
@@ -149,32 +136,27 @@ Implements zdGPSKit.DataProvider
 		Private Sub NotifyListeners(inNewData As String)
 		  //-- Send each registered listener the new data
 		  
-		  #pragma DisableBackgroundTasks
-		  #pragma DisableBoundsChecking
-		  #Pragma NilObjectChecking Off
-		  
 		  For i As Integer = Self.pDataListeners.Ubound DownTo 0
 		    
 		    // Send the Data to the i-th listener
 		    If Self.pDataListeners( i ) Is Nil Or Self.pDataListeners( i ).Value Is Nil Then
-		      
 		      // Oops! This one is dead, we remove it
 		      Self.pDataListeners.Remove i
 		      
 		    Else
-		      
 		      // Notify the listener
 		      zdGPSKit.DataListener( Self.pDataListeners( i ).Value ).NewData( inNewData )
 		      
 		    End If
 		    
 		  Next
-		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Function Open() As Boolean
+		  //-- Initialize the serial socket and open connection
+		  
 		  // Create a new SerialSocket
 		  Dim theSerial As New Serial
 		  
@@ -189,7 +171,6 @@ Implements zdGPSKit.DataProvider
 		  Dim theResult As Boolean = theSerial.Open
 		  
 		  If theResult Then
-		    
 		    // The socket is open
 		    Self.pSerialSocket = theSerial
 		    Self.pIsConnected = True
@@ -205,7 +186,6 @@ Implements zdGPSKit.DataProvider
 		    Return True
 		    
 		  Else
-		    
 		    // The socket failed to open
 		    Self.pIsConnected = False
 		    Self.pLastErrorCode = theSerial.LastErrorCode
@@ -214,7 +194,6 @@ Implements zdGPSKit.DataProvider
 		    Return False
 		    
 		  End If
-		  
 		End Function
 	#tag EndMethod
 
@@ -226,7 +205,6 @@ Implements zdGPSKit.DataProvider
 		  
 		  // Parameter validation
 		  If inListener Is Nil Then
-		    
 		    // Prepare and raise a NilObjectException
 		    Dim theException As New NilObjectException
 		    theException.Message = CurrentMethodName + ": Can't register a Nil object ( i.e. inListener was Nil ). "
@@ -238,14 +216,12 @@ Implements zdGPSKit.DataProvider
 		  Dim theIndex As Integer = Self.IndexOfListener( inListener )
 		  
 		  If theIndex < 0 Then
-		    
 		    // No, we can append it
 		    Self.pDataListeners.Append New WeakRef( inListener )
 		    
 		  Else
-		    
 		    // Yes. Not a showstopper, but we log this event to the console
-		    'System.DebugLog CurrentMethodName + ": inListener is already registered."
+		    System.DebugLog CurrentMethodName + ": inListener is already registered."
 		    
 		  End If
 		  
@@ -257,8 +233,6 @@ Implements zdGPSKit.DataProvider
 		  //-- Remove the passed listener as parameter from the listener list
 		  // Raise a NilObjectException if inListener is Nil
 		  // Part of the zdGPSKit.DataProvider interface.
-		  
-		  #pragma DisableBackgroundTasks
 		  
 		  // Parameter validation
 		  If inListener Is Nil Then

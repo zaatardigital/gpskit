@@ -50,10 +50,7 @@ Implements zdGPSKit.DataListener,zdGPSKit.FixProvider
 
 	#tag Method, Flags = &h0
 		Sub Constructor()
-		  //-- The class constructor.
-		  
-		  // Optimizations
-		  #pragma DisableBackgroundTasks
+		  //-- Initializing the instance
 		  
 		  // Create the sentence dictionary
 		  Self.pSentences = New Dictionary
@@ -131,8 +128,6 @@ Implements zdGPSKit.DataListener,zdGPSKit.FixProvider
 		Private Function MakeNewFix() As zdGPSKit.Fix
 		  //-- Create a new fix from the available Data
 		  
-		  #pragma DisableBackgroundTasks
-		  
 		  Dim theNewGPSFix As New zdGPSKit.Fix
 		  Dim theLocation As zdGPSKit.Geo.EarthLocation = theNewGPSFix.EarthLocation
 		  Dim theMotion As zdGPSKit.Geo.EarthMotion = theNewGPSFix.EarthMotion
@@ -172,12 +167,12 @@ Implements zdGPSKit.DataListener,zdGPSKit.FixProvider
 		  End If
 		  
 		  Return theNewGPSFix
-		  
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub NewData(inData As String)
+		  //-- Handles the new data sent by the DataProvider
 		  // Part of the zdGPSKit.DataListener interface.
 		  
 		  // *--*
@@ -194,7 +189,7 @@ Implements zdGPSKit.DataListener,zdGPSKit.FixProvider
 		  theSentences = theData.SplitB( EndOfLine.Windows )
 		  
 		  // NMEA sentences always end with CRLF. If there is an unfinished sentence, we store it for the next call
-		  // If not, then the last string in the array is "", so it will clear the unprocessed data buffer.
+		  // If not, then the last string in the array is an empty string (""), so storing it clears the unprocessed data buffer.
 		  Self.pUnprocessedData = theSentences.Pop
 		  
 		  // *--*
@@ -216,7 +211,7 @@ Implements zdGPSKit.DataListener,zdGPSKit.FixProvider
 		      
 		      // Handle special case(s) if needed
 		      If theKey = "GPGSV" Then
-		        
+		        // There can be multiple GPGSV sentences
 		        // Add the sentence number in the key
 		        theKey = theKey + theCommand.Parameter( 2 )
 		        

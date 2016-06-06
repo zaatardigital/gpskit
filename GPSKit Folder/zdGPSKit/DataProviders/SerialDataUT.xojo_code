@@ -15,14 +15,10 @@ Implements zdGPSKit.DataProvider
 
 	#tag Event
 		Sub Error()
-		  //-- An Error has occured
-		  
-		  Break
+		  //-- An Error has occurred
 		  
 		  Me.pIsConnected = False
 		  Me.NotifyErrorToListeners Me.LastErrorCode
-		  
-		  Break
 		End Sub
 	#tag EndEvent
 
@@ -47,8 +43,6 @@ Implements zdGPSKit.DataProvider
 		Private Function IndexOfListener(inListener As zdGPSKit.DataListener) As Integer
 		  //-- Retrieve the index of the passed listener
 		  // Return -1 if no match is found
-		  
-		  #pragma DisableBackgroundTasks
 		  
 		  For i As Integer = Self.pDataListeners.Ubound DownTo 0
 		    
@@ -75,10 +69,6 @@ Implements zdGPSKit.DataProvider
 		Private Sub NotifyErrorToListeners(inErrorCode As Integer)
 		  //-- Send each registered listener an error notification
 		  
-		  #pragma DisableBackgroundTasks
-		  #pragma DisableBoundsChecking
-		  #Pragma NilObjectChecking Off
-		  
 		  For i As Integer = Self.pDataListeners.Ubound DownTo 0
 		    
 		    // Send the Data to the i-th listener
@@ -102,10 +92,6 @@ Implements zdGPSKit.DataProvider
 	#tag Method, Flags = &h21
 		Private Sub NotifyListeners(inNewData As String)
 		  //-- Send each registered listener the new data
-		  
-		  #pragma DisableBackgroundTasks
-		  #pragma DisableBoundsChecking
-		  #Pragma NilObjectChecking Off
 		  
 		  For i As Integer = Self.pDataListeners.Ubound DownTo 0
 		    
@@ -136,7 +122,6 @@ Implements zdGPSKit.DataProvider
 		  Dim theResult As Boolean = Super.Open
 		  
 		  If theResult Then
-		    
 		    // The socket is open
 		    Me.pIsConnected = True
 		    
@@ -144,7 +129,6 @@ Implements zdGPSKit.DataProvider
 		    Return True
 		    
 		  Else
-		    
 		    // The socket failed to open
 		    Me.pIsConnected = False
 		    
@@ -194,8 +178,6 @@ Implements zdGPSKit.DataProvider
 		  //-- Remove the passed listener as parameter from the listener list
 		  // Raise a NilObjectException if inListener is Nil
 		  // Part of the zdGPSKit.DataProvider interface.
-		  
-		  #pragma DisableBackgroundTasks
 		  
 		  // Parameter validation
 		  If inListener Is Nil Then

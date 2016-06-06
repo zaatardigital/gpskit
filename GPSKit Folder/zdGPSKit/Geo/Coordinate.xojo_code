@@ -4,9 +4,6 @@
 		 Shared Sub CleanAllInstancesCache()
 		  //-- Calls all known instances' pCleanFormatCaches method
 		  
-		  #pragma DisableBackgroundTasks
-		  #pragma DisableBoundsChecking
-		  
 		  // We are going downward through the array
 		  For i As Integer = zdGPSKit.Geo.Coordinate.pInstances.Ubound DownTo 0
 		    
@@ -31,7 +28,6 @@
 		    // Catch unexpected problems
 		    exc.Message = CurrentMethodName + ": catch an unexpected problem --- " + exc.Message
 		    Raise exc
-		    
 		End Sub
 	#tag EndMethod
 
@@ -45,11 +41,7 @@
 
 	#tag Method, Flags = &h0
 		Sub Destructor()
-		  
 		  //-- We need to remove this instance's reference from the 'all instances' array
-		  
-		  #pragma DisableBackgroundTasks
-		  #pragma DisableBoundsChecking
 		  
 		  For i As Integer = zdGPSKit.Geo.Coordinate.pInstances.Ubound DownTo 0
 		    
@@ -70,7 +62,6 @@
 		    // Catch unexpected problems
 		    exc.Message = CurrentMethodName + ": catch an unexpected problem --- " + exc.Message
 		    Raise exc
-		    
 		End Sub
 	#tag EndMethod
 

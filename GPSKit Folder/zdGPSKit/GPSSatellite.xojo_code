@@ -17,10 +17,6 @@
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		Untitled As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
 		UsedInFix As Boolean
 	#tag EndProperty
 

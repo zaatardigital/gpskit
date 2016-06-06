@@ -1761,7 +1761,6 @@ End
 		Sub Action()
 		  
 		  //-- Refresh the GPS satelittes constellation display
-		  #pragma DisableBackgroundTasks
 		  
 		  // Part of the 'Do we have new data?' mechanism
 		  Static theLastGPGSV1 As zdGPSKit.NMEA.GPGSV

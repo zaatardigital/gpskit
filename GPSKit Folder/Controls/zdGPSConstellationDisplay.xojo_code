@@ -44,10 +44,7 @@ Inherits zdFlickFreeCanvas
 
 	#tag Method, Flags = &h21
 		Private Sub DrawBuffer()
-		  
-		  #pragma DisableBackgroundTasks
-		  #pragma DisableBoundsChecking
-		  #pragma NilObjectChecking Off
+		  //-- Draw the buffer picture
 		  
 		  Const kDegToRad = 0.017453292519943
 		  Const kHalfSkySize = 100.0

@@ -2,11 +2,9 @@
  Attributes ( Encryption = True ) Protected Class Sentence
 	#tag Method, Flags = &h0
 		Function Age() As Double
-		  
 		  //-- Return the time elapsed since the creation of this command in seconds.
 		  
 		  Return  ( Microseconds - Self.pBirthTime ) / 1000000.0
-		  
 		End Function
 	#tag EndMethod
 
@@ -21,10 +19,6 @@
 		  // - The NMEA checkhsum is the representation of two hexadecimal characters of an XOR
 		  //   of all characters in the sentence between – but not including – the $ and the * character.
 		  // - CType is used to avoid conversion types warnings when anlyzing the project.
-		  
-		  // Generic optimizations
-		  #pragma DisableBackgroundTasks
-		  #pragma DisableBoundsChecking
 		  
 		  // Getting the last offset value
 		  Dim theUpperOffset As Integer = inStringToCheck.Size - 1
@@ -51,44 +45,29 @@
 		  
 		  // Split the data chunk in an array of fields and store it in a property
 		  Self.pDataFields = inNMEADataChunk.SplitB( zdGPSKit.NMEA.Sentence.kCmdFieldMark )
-		  
-		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Function Name() As String
-		  
-		  // To be thread safe
-		  #pragma DisableBackgroundTasks
-		  
-		  // Other optimizations
-		  #pragma DisableBoundsChecking
+		  //-- Returns the name of the sentence
 		  
 		  If Self.pDataFields.Ubound > -1 Then
-		    
 		    // Return the first field of data
 		    Return Self.pDataFields( 0 )
 		    
 		  Else
-		    
 		    // Currently, there is no data
 		    Return ""
 		    
 		  End If
-		  
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		 Shared Function NewSentence(inSentence As String) As zdGPSKit.NMEA.Sentence
-		  
 		  //-- Returns a new zdGPSKit.NMEA.Sentence instance based on the passed NMEA sentence
 		  // It assumes the string is ASCII encoded. If the Sentence is invalid, returns Nil
-		  
-		  // Generic optimizations
-		  #pragma DisableBackgroundTasks
-		  #pragma DisableBoundsChecking
 		  
 		  // Get the string length
 		  Dim theLength As Integer = inSentence.LenB
@@ -154,13 +133,8 @@
 
 	#tag Method, Flags = &h0
 		Function NMEASentence() As String
-		  
 		  //-- Returns a well formed NMEA compliant sentence
 		  // If there is no data, then returns an empty string
-		  
-		  // Generic optimizations
-		  #pragma DisableBackgroundTasks
-		  #pragma DisableBoundsChecking
 		  
 		  // Is there any data?
 		  If Self.pDataFields.Ubound < 0 Then
@@ -180,19 +154,14 @@
 		  + zdGPSKit.NMEA.Sentence.kCmdChecksumMark.ConvertEncoding( Encodings.ASCII ) + theChecksum
 		  
 		  Return theResult
-		  
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Function Parameter(inIndex As Integer) As String
-		  
 		  //-- Return the parameter value for inIndex ( one-based )
 		  // The command name ( 0th array's element ) isn't considered as a parameter
 		  
-		  // Optimizations
-		  #pragma DisableBackgroundTasks
-		  #pragma DisableBoundsChecking
 		  
 		  If inIndex < 1 Then
 		    
@@ -209,18 +178,15 @@
 		    Return Self.pDataFields( inIndex )
 		    
 		  End If
-		  
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Function ParameterCount() As Integer
-		  
 		  //-- The number of parameter available
 		  // The command name ( 0th array's element ) isn't considered as a parameter
 		  
 		  Return Self.pDataFields.Ubound
-		  
 		End Function
 	#tag EndMethod
 
@@ -250,14 +216,8 @@
 		Private Shared Function SmartCommandCreator(inDataString As String) As zdGPSKit.NMEA.Sentence
 		  //-- Create and return the appropriate zdGPSKit.NMEA.Sentence sub type given the command name inDataString
 		  
-		  // Generic optimizations
-		  #pragma DisableBackgroundTasks
-		  #pragma DisableBoundsChecking
-		  
-		  // Call the pre hook if one has been registered
-		  
+		  // Call the pre hook delegate if one has been registered
 		  If Not ( zdGPSKit.NMEA.Sentence.pPreSmartSentenceCreatorHook Is Nil ) Then
-		    
 		    Dim theResult As zdGPSKit.NMEA.Sentence = zdGPSKit.NMEA.Sentence.pPreSmartSentenceCreatorHook.Invoke( inDataString )
 		    If Not ( theResult Is Nil ) Then Return theResult
 		    
@@ -317,7 +277,6 @@
 		    // Call the post hook if one has been registered
 		    
 		    If Not ( zdGPSKit.NMEA.Sentence.pPostSmartSentenceCreatorHook Is Nil ) Then
-		      
 		      Dim theResult As zdGPSKit.NMEA.Sentence = zdGPSKit.NMEA.Sentence.pPostSmartSentenceCreatorHook.Invoke( inDataString )
 		      If Not ( theResult Is Nil ) Then Return theResult
 		      
