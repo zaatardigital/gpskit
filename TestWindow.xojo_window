@@ -130,7 +130,6 @@ Begin Window TestWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   0
-            TabStop         =   True
             Text            =   ""
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -221,7 +220,6 @@ Begin Window TestWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   0
-            TabStop         =   True
             Text            =   "Latitude"
             TextAlign       =   2
             TextColor       =   &c00000000
@@ -256,7 +254,6 @@ Begin Window TestWindow
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   0
-            TabStop         =   True
             Text            =   "Longitude"
             TextAlign       =   2
             TextColor       =   &c00000000
@@ -291,7 +288,6 @@ Begin Window TestWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   0
-            TabStop         =   True
             Text            =   "Altitude"
             TextAlign       =   2
             TextColor       =   &c00000000
@@ -455,7 +451,6 @@ Begin Window TestWindow
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   0
-            TabStop         =   True
             Text            =   "Meters"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -534,7 +529,6 @@ Begin Window TestWindow
          Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Date && Time"
          TextAlign       =   2
          TextColor       =   &c00000000
@@ -596,7 +590,6 @@ Begin Window TestWindow
             Selectable      =   False
             TabIndex        =   0
             TabPanelIndex   =   0
-            TabStop         =   True
             Text            =   "Ground Velocity"
             TextAlign       =   2
             TextColor       =   &c00000000
@@ -631,7 +624,6 @@ Begin Window TestWindow
             Selectable      =   False
             TabIndex        =   1
             TabPanelIndex   =   0
-            TabStop         =   True
             Text            =   "Vertical Velocity"
             TextAlign       =   2
             TextColor       =   &c00000000
@@ -666,7 +658,6 @@ Begin Window TestWindow
             Selectable      =   False
             TabIndex        =   2
             TabPanelIndex   =   0
-            TabStop         =   True
             Text            =   "Course"
             TextAlign       =   2
             TextColor       =   &c00000000
@@ -830,7 +821,6 @@ Begin Window TestWindow
             Selectable      =   False
             TabIndex        =   6
             TabPanelIndex   =   0
-            TabStop         =   True
             Text            =   "Km/h"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -865,7 +855,6 @@ Begin Window TestWindow
             Selectable      =   False
             TabIndex        =   7
             TabPanelIndex   =   0
-            TabStop         =   True
             Text            =   "m/s"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -900,7 +889,6 @@ Begin Window TestWindow
             Selectable      =   False
             TabIndex        =   8
             TabPanelIndex   =   0
-            TabStop         =   True
             Text            =   "°"
             TextAlign       =   0
             TextColor       =   &c00000000
@@ -995,7 +983,6 @@ Begin Window TestWindow
          Selectable      =   False
          TabIndex        =   1
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Serial Port"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -1030,7 +1017,6 @@ Begin Window TestWindow
          Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Protocol"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -1127,7 +1113,6 @@ Begin Window TestWindow
          Selectable      =   False
          TabIndex        =   5
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Not connected"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -1193,7 +1178,6 @@ Begin Window TestWindow
          Selectable      =   False
          TabIndex        =   7
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Default format"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -1345,7 +1329,6 @@ Begin Window TestWindow
       Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Build Infos"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -1359,8 +1342,7 @@ Begin Window TestWindow
       Width           =   530
    End
    Begin Timer ConstellationRefresher
-      Enabled         =   True
-      Height          =   "32"
+      Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   422
@@ -1370,12 +1352,10 @@ Begin Window TestWindow
       Scope           =   0
       TabPanelIndex   =   0
       Top             =   247
-      Visible         =   True
-      Width           =   "32"
+      Width           =   32
    End
    Begin Timer FixUpdater
-      Enabled         =   True
-      Height          =   "32"
+      Height          =   32
       Index           =   -2147483648
       InitialParent   =   ""
       Left            =   24
@@ -1385,8 +1365,7 @@ Begin Window TestWindow
       Scope           =   0
       TabPanelIndex   =   0
       Top             =   175
-      Visible         =   True
-      Width           =   "32"
+      Width           =   32
    End
 End
 #tag EndWindow
