@@ -41,6 +41,13 @@ Protected Module zdGPSKit
 	#tag EndMethod
 
 
+	#tag Note, Name = Documentation
+		Online documentatioon is avalaible here:
+		
+		http://docs.zaatardigital.com
+	#tag EndNote
+
+
 	#tag Constant, Name = kRatioFeetMinToMeterSec, Type = Double, Dynamic = False, Default = \"0.00508", Scope = Protected
 	#tag EndConstant
 
@@ -84,6 +91,9 @@ Protected Module zdGPSKit
 	#tag EndConstant
 
 	#tag Constant, Name = kSymbolNotAvailable, Type = String, Dynamic = False, Default = \"n/a", Scope = Protected
+	#tag EndConstant
+
+	#tag Constant, Name = kVersion, Type = String, Dynamic = False, Default = \"2.0", Scope = Protected
 	#tag EndConstant
 
 
