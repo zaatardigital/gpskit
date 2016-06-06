@@ -1731,7 +1731,7 @@ End
 		  //-- Fillup the build infos field
 		  
 		  Me.Text = "GPS Kit for Xojo® demo - v" + Str( App.MajorVersion ) + "." + Str( App.MinorVersion ) _
-		  + " Build #" + Str( App.NonReleaseVersion ) + " © Eric de La Rochette 2012-2015"
+		  + " Build #" + Str( App.NonReleaseVersion ) + " © Za'atar Digital - 2012-2016"
 		End Sub
 	#tag EndEvent
 #tag EndEvents
