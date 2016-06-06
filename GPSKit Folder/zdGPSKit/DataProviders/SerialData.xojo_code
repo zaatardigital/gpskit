@@ -76,12 +76,13 @@ Implements zdGPSKit.DataProvider
 		Sub HandleSerialError(inSerial As Serial)
 		  //-- Handles the serial data error
 		  
-		  // Retrieve the error code
-		  Dim theErrorCode As Integer = inSerial.LastErrorCode
-		  
-		  // Notify the listeners about the error
-		  
-		  Break
+		  If Not ( inSerial Is Nil ) Then 
+		    Self.NotifyErrorToListeners( inSerial.LastErrorCode )
+		    
+		  Else
+		    Self.NotifyErrorToListeners( -1 )
+		    
+		  End If
 		End Sub
 	#tag EndMethod
 

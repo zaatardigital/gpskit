@@ -4,12 +4,11 @@ Inherits Serial
 Implements zdGPSKit.DataProvider
 	#tag Event
 		Sub DataAvailable()
+		  //-- New data are available
 		  
-		  // Yes, Read & send them to the listeners
+		  // Yes, Read & send them to the listeners if needed
 		  Dim theData As String = Me.ReadAll
-		  Self.NotifyListeners( theData )
-		  
-		  System.DebugLog CurrentMethodName +":" + EndOfLine + theData
+		  If theData <> "" Then Self.NotifyListeners( theData )
 		End Sub
 	#tag EndEvent
 

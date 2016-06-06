@@ -63,10 +63,10 @@ Implements zdGPSKit.DataListener,zdGPSKit.FixProvider
 
 	#tag Method, Flags = &h0
 		Sub DataFlowError(inErrorCode As Integer)
-		  //-- An error has occured in the flow
+		  //-- An error has occurred in the flow
 		  // Part of the zdGPSKit.DataListener interface.
 		  
-		  Raise New zdGPSKit.GPSKitException( inErrorCode, CurrentMethodName + ": A flow error #" + Str( inErrorCode ) + " has occured." )
+		  Raise New zdGPSKit.GPSKitException( inErrorCode, CurrentMethodName + ": A flow error #" + Str( inErrorCode ) + " has occurred." )
 		End Sub
 	#tag EndMethod
 
