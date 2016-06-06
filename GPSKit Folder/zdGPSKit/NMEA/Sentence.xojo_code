@@ -299,6 +299,9 @@
 		  Case "GPBOD"
 		    Return New zdGPSKit.NMEA.GPBOD( inDataString )
 		    
+		  Case "GPDPT"
+		    Return New zdGPSKit.NMEA.GPDPT( inDataString )
+		    
 		    // Handle the Garmin proprietary sentences
 		    
 		  Case "PGRME"
